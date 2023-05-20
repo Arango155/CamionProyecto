@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('transporte_codigo')->nullable();
             $table->foreign('transporte_codigo')->references('id')->on('transportes')->onDelete('no action');
 
+
             $table->timestamps();
         });
     }

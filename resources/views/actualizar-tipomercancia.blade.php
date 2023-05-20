@@ -4,20 +4,21 @@
 
 @section('contenido')
     <div class="card">
-        <h5 class="card-header">Actualizar nueva persona</h5>
+        <h5 class="card-header">Actualizar nuevo tipo mercancia</h5>
         <div class="card-body">
             <p class="card-text">
 
-            <form action="{{ route('predios.updatep', $predios->id)}}" method="POST">
+            <form action="{{ route('tipomercancias.updatetm', $tipomercancias->id)}}" method="POST">
                 @csrf
                 @method("PUT")
-                <label for="">Nombre</label>
-                <input type="text" name="nombre_predio" class="form-control" required value="{{$predios->nombre_predio}}">
+                <label for="">ID</label>
+                <input type="text" name="id" class="form-control" required value="{{$tipomercancias->id}}">
+
                 <label for="">Direccion</label>
-                <input type="text" name="direccion" class="form-control" required value="{{$predios->direccion}}">
+                <input type="text" name="descripcion" class="form-control" required value="{{$tipomercancias->direccion}}">
 
                 <br>
-                <a href="{{ route("predios.indexp") }}" class="btn btn-info">
+                <a href="{{ route("tipomercancias.indextm") }}" class="btn btn-info">
                     <span class="fas fa-undo-alt"></span> Regresar
                 </a>
                 <button class="btn btn-warning">

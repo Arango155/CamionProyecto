@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('predio', function (Blueprint $table) {
-            $table->unsignedBigInteger('codigo_predio')->primary();
+        Schema::create('predios', function (Blueprint $table) {
+            $table->id()->unique();
             $table->string('nombre_predio', 105);
             $table->string('direccion', 175);
 

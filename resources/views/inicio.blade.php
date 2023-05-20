@@ -19,19 +19,12 @@
 
                 </div>
             </div>
-        <h5 class="card-title text-center">Listado de personas en el sistema</h5>
+        <h5 class="card-title text-center">Listado en el sistema</h5>
             <p>
-                <a href="{{ route("personas.create") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nueva persona
+                <a href="{{ route("predios.createp") }}" class="btn btn-primary">
+                    <span class="fas fa-user-plus"></span>  Agregar nuevo predio
                 </a>
 
-                <a href="{{ route("transportes.createt") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo transporte
-                </a>
-
-                <a href="{{ route("camiones.createc") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo camión
-                </a>
 
             </p>
             <hr>
@@ -40,23 +33,21 @@
                 <div class="table table-responsive">
                 <table class="table table-sm table-bordered">
                     <thead>
-                        <th>Apellido paterno</th>
-                        <th>Apellido materno</th>
+                        <th>Codigo</th>
                         <th>Nombre</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th>Direccion</th>
+
                     </thead>
                     <tbody>
                     @foreach($datos as $item)
                             <tr>
-                                <td>{{ $item->paterno }}</td>
-                                <td>{{ $item->materno }}</td>
-                                <td>{{ $item->nombre }}</td>
-                                <td>{{ $item->fecha_nacimiento }}</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->nombre_predio }}</td>
+                                <td>{{ $item->direccion}}</td>
+
 
                                 <td>
-                                    <form action="{{ route("personas.edit", $item->id) }}" method="GET">
+                                    <form action="{{ route("predios.editp", $item->id) }}" method="GET">
                                         <button class="btn btn-warning btn-sm">
                                             <span class="fas fa-user-edit"></span>
                                         </button>
@@ -64,7 +55,7 @@
                                 </td>
 
                                 <td>
-                                    <form action="{{ route("personas.show", $item->id) }}" method="GET">
+                                    <form action="{{ route("predios.showp", $item->id) }}" method="GET">
                                         <button class="btn btn-danger btn-sm">
                                             <span class="fas fa-user-times"></span>
                                         </button>

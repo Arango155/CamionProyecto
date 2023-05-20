@@ -6,7 +6,7 @@
 @section('contenidot')
 
     <div class="card" xmlns="http://www.w3.org/1999/html">
-        <h5 class="card-header">TRANSPORTES</h5>
+        <h5 class="card-header">CRUD con laravel 8 y MySQL</h5>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-12">
@@ -26,13 +26,7 @@
                     <span class="fas fa-user-plus"></span>  Agregar nuevo transporte
                 </a>
 
-                <a href="{{ route("camiones.createc") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nuevo camion
-                </a>
 
-                <a href="{{ route("personas.create") }}" class="btn btn-primary">
-                    <span class="fas fa-user-plus"></span>  Agregar nueva persona
-                </a>
 
             </p>
             <hr>

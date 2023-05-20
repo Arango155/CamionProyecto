@@ -13,36 +13,50 @@
 
 
 </head>
+
+
 <body>
+
+<style>
+    body{
+         background-image: url(https://www.orbcomm.com/img/intro-byasset.jpg);
+    background-position:center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+
+    }
+
+</style>
+
 
 <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="{{ route("plantilla.index") }}">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
+
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="{{ route("transportes.indext") }}">Transportes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="{{ route("camiones.indexc") }}" >Camiones</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Enlace desplegable
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route("transportes.indext") }}"">Transportes</a></li>
-                            <li><a class="dropdown-item" href="{{ route("camiones.indexc") }}">Camiones</a></li>
-                            <li><a class="dropdown-item" href="{{ route("personas.index") }}">Personas</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route("predios.indexp") }}">Predios</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route("mercancias.indexm") }}">Mercancias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route("tipomercancias.indextm") }}">Tipo de mercancia</a>
+                    </li>
+
+
                 </ul>
             </div>
         </div>
@@ -51,21 +65,9 @@
 
 
 <div>
-    <a href="{{ route("transportes.indext") }}" class="btn btn-primary">
-        <span class="fas fa-user-plus"></span>  Transportes
-    </a>
 
-    <a href="{{ route("camiones.indexc") }}" class="btn btn-primary">
-        <span class="fas fa-user-plus"></span>  Camiones
-    </a>
 
-    <a href="{{ route("personas.index") }}" class="btn btn-primary">
-        <span class="fas fa-user-plus"></span>  Personas
-    </a>
 
-    <a href="{{ route("personas.create") }}" class="btn btn-primary">
-        <span class="fas fa-user-plus"></span>  Per
-    </a>
 
 {{--    <a href="{{ route("layout/plantilla") }}" class="btn btn-info">--}}
 {{--        <span class="fas fa-undo-alt"></span> Regresar--}}
@@ -73,6 +75,8 @@
 
 
 </div>
+
+
 
 
 

@@ -4,21 +4,21 @@
 
 @section('contenido')
     <div class="card">
-        <h5 class="card-header">Agregar nueva persona</h5>
+        <h5 class="card-header">Agregar nueva mercancia</h5>
         <div class="card-body">
 
             <p class="card-text">
-                <form action="{{ route('predios.storep') }}" method="POST">
+            <form action="{{ route('mercancias.storem') }}" method="POST">
                 @csrf
-                <label for="">Codigo predio</label>
+                <label for="">Codigo </label>
                 <input type="text" name="id" class="form-control" required>
-                <label for="">Nombre Predio</label>
-                <input type="text" name="nombre_predio" class="form-control" required>
-                <label for="">Direccion</label>
-                <input type="text" name="direccion" class="form-control" required>
+                <label for="">Nombre</label>
+                <input type="text" name="nombre" class="form-control" required>
+                <label for="">Tipo de mercancia</label>
+                <input type="text" name="id_tipo_mercancias" class="form-control" required>
 
                 <br>
-                <a href="{{ route("predios.indexp") }}" class="btn btn-info">
+                <a href="{{ route("mercancias.indexm") }}" class="btn btn-info">
                     <span class="fas fa-undo-alt"></span> Regresar
                 </a>
                 <button class="btn btn-primary">

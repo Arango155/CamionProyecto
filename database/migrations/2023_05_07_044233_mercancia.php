@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mercancia', function (Blueprint $table) {
-            $table->unsignedBigInteger('codigo')->primary();
+        Schema::create('mercancias', function (Blueprint $table) {
+            $table->id();
             $table->string('nombre', 105);
-            $table->foreignId('id_tipo_mercancia')->references('id')->on('tipo_mercancia');
+
+            $table->unsignedBigInteger('id_tipo_mercancias')->nullable();
+            $table->foreign('id_tipo_mercancias')->references('id')->on('tipo_mercancias')->onDelete('no action');
+
             $table->timestamps();
         });
     }
