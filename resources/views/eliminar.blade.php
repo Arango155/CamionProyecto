@@ -13,8 +13,8 @@
 
                 <table class="table table-sm table-hover table-bordered" style="background-color: white">
                     <thead>
-                        <th>Nombre predio</th>
-                        <th>Direccion</th>
+                    <th>Nombre predio</th>
+                    <th>Direccion</th>
 
                     </thead>
                     <tbody>
@@ -33,7 +33,7 @@
                         <span class="fas fa-undo-alt"></span> Regresar
                     </a>
                     <button class="btn btn-danger">
-                        <span class="fas fa-user-times"></span>  Eliminar
+                        <span class="fas fa-user-times"></span> Eliminar
                     </button>
 
                 </form>
