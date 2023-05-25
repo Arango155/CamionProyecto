@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use Illuminate\Routing\Controller as BaseController;
 use App\Models\Transporte;
@@ -13,14 +11,17 @@ use App\Models\Predio;
 use App\Models\Mercancia;
 use App\Models\Tipo_mercancia;
 
+
+
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Session;
-
-use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 
-use function Psy\debug;
+use Illuminate\Support\Facades\Redirect;
+
+use function GuzzleHttp\Promise\all;
+
 
 class Controller extends BaseController
 {
@@ -104,38 +105,81 @@ class Controller extends BaseController
         return view('agregar-camion');
     }
 
+//    public function storec(Request $request)
+//    {
+//
+//
+//        try {
+//            $camiones = new Camion();
+//            $camiones->id = $request->post('id');
+//            $camiones->placa_camion = $request->post('placa_camion');
+//            $camiones->marca = $request->post('marca');
+//            $camiones->color = $request->post('color');
+//            $camiones->modelo = $request->post('modelo');
+//            $camiones->capacidad_toneladas = $request->post('capacidad_toneladas');
+//            $camiones->transporte_codigo = $request->post('transporte_codigo');
+//            $camiones->save();
+//
+//        } catch (\Exception $exception) {
+//            $message= " Excepción general ". $exception->getMessage();
+//            return view('exceptions.exceptions', compact('message'));
+//        }catch (QueryException $queryException){
+//            $message= " Excepción de SQL ". $queryException->getMessage();
+//            return view('errors.404', compact('message'));
+//        }catch (ModelNotFoundException $modelNotFoundException){
+//            $message=" Excepción del Sistema ".$modelNotFoundException->getMessage();
+//            return view('errors.404', compact('message'));
+//        }
+//
+//
+//        return redirect()->route("camiones.indexc")->with("success", "Agregado con exito!");
+//
+//
+//
+//
+//    }
+
     public function storec(Request $request)
     {
-
-
         try {
+            $validateData =validator::make ($request->all(),[
+
+                'placa_camion' => 'string',
+                'marca' => 'string ',
+                'color' => 'string',
+                'modelo' => 'string',
+                'capacidad_toneladas' => 'required|string ',
+                'transporte_codigo' => 'required',
+
+
+            ])->safe()->all();
+
+            //Sirve para guardar datos en la base de datos
             $camiones = new Camion();
-            $camiones->id = $request->post('id');
-            $camiones->placa_camion = $request->post('placa_camion');
-            $camiones->marca = $request->post('marca');
-            $camiones->color = $request->post('color');
-            $camiones->modelo = $request->post('modelo');
-            $camiones->capacidad_toneladas = $request->post('capacidad_toneladas');
-            $camiones->transporte_codigo = $request->post('transporte_codigo');
+
+            $camiones->placa_camion = $validateData['placa_camion'];
+            $camiones->marca = $validateData['marca'];
+            $camiones->color = $validateData['color'];
+            $camiones->modelo = $validateData['modelo'];
+            $camiones->capacidad_toneladas = $validateData['capacidad_toneladas'];
+            $camiones->transporte_codigo = $validateData['transporte_codigo'];
             $camiones->save();
 
-        } catch (\Exception $exception) {
-            $message= " Excepción general ". $exception->getMessage();
-            return view('exceptions.exceptions', compact('message'));
-        }catch (QueryException $queryException){
-            $message= " Excepción de SQL ". $queryException->getMessage();
-            return view('errors.404', compact('message'));
-        }catch (ModelNotFoundException $modelNotFoundException){
-            $message=" Excepción del Sistema ".$modelNotFoundException->getMessage();
-            return view('errors.404', compact('message'));
-        }
 
-
-        return redirect()->route("camiones.indexc")->with("success", "Agregado con exito!");
-
-
-
-
+            return redirect()->route("camiones.indexc")->with("success", "Agregado con exito!");
+        } catch (QueryException $e) {
+            if ($e->getCode() === '22003') {
+                // Error 22003: Valor numérico fuera de rango
+                return redirect()->back()->with('error', 'Error al crear camiones: Valor de transporte fuera de rango');
+            } else {
+                // Otro error de clave foránea o error de base de datos
+                return redirect()->back()->with('error', 'error de base de datos : ' . $e->getMessage());
+            }
+        } //catch (\Exception $e) {
+        // Capturar excepción general
+        // Manejar cualquier otro tipo de excepción que pueda ocurrir
+        //return redirect()->back()->with('error', 'Error de otro tipo fuera del crud publicación: ' . $e->getMessage());
+        // }
     }
 
     public function showc($id)

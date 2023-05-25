@@ -20,8 +20,6 @@ return new class extends Migration
             $table->integer('capacidad_toneladas');
             $table->unsignedBigInteger('transporte_codigo')->nullable();
             $table->foreign('transporte_codigo')->references('id')->on('transportes')->onDelete('no action');
-
-
             $table->timestamps();
         });
     }

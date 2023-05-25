@@ -1,8 +1,19 @@
 @extends('layout.plantilla')
-
 @section("tituloPagina", "crear un nuevo registro")
 
-@section('contenidoc')
+@section('contenido')
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="card">
         <h5 class="card-header">Agregar nuevo camion</h5>
         <div class="card-body">
@@ -29,7 +40,7 @@
                 <a href="{{ route("camiones.indexc") }}" class="btn btn-info">
                     <span class="fas fa-undo-alt"></span> Regresar
                 </a>
-                <button class="btn btn-primary">
+                <button  class="btn btn-primary">
                     <span class="fas fa-user-plus"></span>Agregar
                 </button>
 
@@ -41,4 +52,3 @@
     </div>
 
 @endsection
-

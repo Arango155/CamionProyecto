@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class mercancia extends Model
 {
+    public $table='mercancias';
     use HasFactory;
+    public function tipo(){
 
-    public function tipo_mercancia()
-    {
-        return $this->hasOne(tipo_mercancia::class);
+        return $this->belongsTo('App\Models\Tipo_mercancia');
     }
-
 }

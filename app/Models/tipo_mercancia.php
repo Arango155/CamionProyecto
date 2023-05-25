@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tipo_mercancia extends Model
+class Tipo_mercancia extends Model
 {
     use HasFactory;
 
-    public function mercancia()
-    {
-        return $this->belongsTo(mercancia::class);
-    }
 
+    public function mercancia (){
+
+        return $this->hasOne('App\Models\mercancia');
+    }
 }

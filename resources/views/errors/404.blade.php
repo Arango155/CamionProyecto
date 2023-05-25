@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('lyout')
 
 @section('content')
     <h3>Error 404: pagina no encontrada</h3>
